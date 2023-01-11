@@ -23,5 +23,4 @@ jobs:
      - name: Build the Docker image
        run: |
         docker build . --tag ghcr.io/mohammed-sameeruddin/bootcamp-32-green-commute_app:latest
-        docker run ghcr.io/mohammed-sameeruddin/bootcamp-32-green-commute_app:latest
         docker push ghcr.io/mohammed-sameeruddin/bootcamp-32-green-commute_app:latest

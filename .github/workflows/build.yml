@@ -24,5 +24,12 @@ jobs:
        run: |
         docker build . --tag ghcr.io/mohammed-sameeruddin/bootcamp-32-green-commute_app:latest
         docker push ghcr.io/mohammed-sameeruddin/bootcamp-32-green-commute_app:latest
+
+     - name: Install dependencies
+       run: npm i
+
+     - name: Build UI
+       run : npm run build
+       
      - name: Test the app
        run: npm run test

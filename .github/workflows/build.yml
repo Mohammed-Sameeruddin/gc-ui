@@ -27,8 +27,8 @@ jobs:
 
      - name: Build the Docker image
        run: |
-        docker build . --tag ghcr.io/${{github.actor}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
-        docker push ghcr.io/${{github.actor}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
+        docker build . --tag ghcr.io/${{secrets.OWNER}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
+        docker push ghcr.io/${{secrets.OWNER}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
 
      - name: Install dependencies
        run: npm i

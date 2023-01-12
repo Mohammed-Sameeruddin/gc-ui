@@ -22,8 +22,8 @@ jobs:
 
      - name: Build the Docker image
        run: |
-        docker build . --tag ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{variables.TAG}}
-        docker push ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{variables.TAG}}
+        docker build . --tag ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}
+        docker push ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}
 
      - name: Install dependencies
        run: npm i
@@ -40,5 +40,5 @@ jobs:
       - name: 'Checkout Github Action'
         uses: actions/checkout@main
       - name: Name of the image with tag
-        run: echo 'IMAGE ${{secrets.DOCKER_IMAGE}}:${{variables.TAG}}'
+        run: echo 'IMAGE ${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}'
   

@@ -37,6 +37,7 @@ jobs:
 
   image:
     runs-on: ubuntu-latest
+    
     steps:
       - name: 'Checkout Github Action'
         uses: actions/checkout@main

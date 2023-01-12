@@ -9,6 +9,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    env:
+      DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
+      TAG: ${{secrets.TAG}}
+
     steps:
      - name: 'Checkout GitHub Action'
        uses: actions/checkout@main
@@ -22,8 +27,8 @@ jobs:
 
      - name: Build the Docker image
        run: |
-        docker build . --tag ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}
-        docker push ghcr.io/${{github.actor}}/${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}
+        docker build . --tag ghcr.io/${{github.actor}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
+        docker push ghcr.io/${{github.actor}}/${{env.DOCKER_IMAGE}}:${{env.TAG}}
 
      - name: Install dependencies
        run: npm i
@@ -36,9 +41,12 @@ jobs:
 
   image:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
+      TAG: ${{secrets.TAG}}
     steps:
       - name: 'Checkout Github Action'
         uses: actions/checkout@main
       - name: Name of the image with tag
-        run: echo 'IMAGE ${{secrets.DOCKER_IMAGE}}:${{secrets.TAG}}'
+        run: echo 'IMAGE ${{env.DOCKER_IMAGE}}:${{env.TAG}}'
   
